@@ -42,6 +42,7 @@
   "scripts": {
     "build": "rm -rf lib && tsc -p tsconfig.json && cp src/client.js lib/client.js",
     "prepare": "npm run build",
+    "release": "semantic-release",
     "dev": "node scripts/dev-watch.mjs",
     "test": "npm run build && node --test lib/tests/*.test.js",
     "typecheck": "tsc -p tsconfig.json --noEmit"
@@ -69,7 +70,14 @@
     "@deepseek-ai/cordis": "^4.0.1",
     "@deepseek-ai/dsh-tools": "^0.1.0-rc.6",
     "@deepseek-ai/schemastery": "^3.18.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/github": "^12.0.9",
+    "@semantic-release/npm": "^13.1.5",
+    "@semantic-release/release-notes-generator": "^14.1.1",
     "@types/node": "^26.2.0",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "semantic-release": "^25.0.9",
     "typescript": "^7.0.2"
   }
 }
