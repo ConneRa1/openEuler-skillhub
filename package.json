@@ -1,0 +1,75 @@
+{
+  "name": "open-euler-skillhub",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness 插件：openEuler 社区技能管理平台（WittyHub）的检索与安装",
+  "homepage": "https://gitcode.com/openeuler/openEuler-skillhub",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitcode.com/openeuler/openEuler-skillhub.git"
+  },
+  "type": "module",
+  "main": "lib/host.js",
+  "exports": {
+    ".": "./lib/host.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "!lib/tests",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "openeuler",
+    "skillhub",
+    "wittyhub",
+    "skills"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "pnpm@11.17.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "rm -rf lib && tsc -p tsconfig.json && cp src/client.js lib/client.js",
+    "prepare": "npm run build",
+    "dev": "node scripts/dev-watch.mjs",
+    "test": "npm run build && node --test lib/tests/*.test.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-ui-settings"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*",
+    "@deepseek-ai/dsh-tools": "*",
+    "@deepseek-ai/schemastery": "*",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-tools": "^0.1.0-rc.6",
+    "@deepseek-ai/schemastery": "^3.18.1",
+    "@types/node": "^26.2.0",
+    "typescript": "^7.0.2"
+  }
+}
