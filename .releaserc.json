@@ -1,6 +1,6 @@
 {
   "branches": ["main"],
-  "repositoryUrl": "https://github.com/ConneRa1/openEuler-skillhub.git",
+  "repositoryUrl": "https://github.com/openwitty/openEuler-skillhub.git",
   "plugins": [
     [
       "@semantic-release/commit-analyzer",
